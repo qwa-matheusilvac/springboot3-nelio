@@ -1,6 +1,7 @@
 package br.com.qwasolucoes.cursoudemy.curso_spring.domain.persistence.entity;
 
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.dto.UserReqDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
