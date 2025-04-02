@@ -9,4 +9,8 @@ class UserServiceTest {
     @Test
     void obterTodos() {
     }
+
+    @Test
+    void criarNovo() {
+    }
 }

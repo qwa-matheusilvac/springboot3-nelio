@@ -1,10 +1,12 @@
 package br.com.qwasolucoes.cursoudemy.curso_spring.domain.persistence.entity;
 
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.dto.UserReqDto;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +15,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +28,9 @@ public class User implements Serializable {
     private String phone;
 
     private String password;
+
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList();
 
     public User(UserReqDto userReqDto) {
         this.name = userReqDto.name();

@@ -6,7 +6,6 @@ import br.com.qwasolucoes.cursoudemy.curso_spring.domain.persistence.repository.
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
