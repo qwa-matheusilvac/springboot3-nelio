@@ -2,6 +2,7 @@ package br.com.qwasolucoes.cursoudemy.curso_spring.domain.service;
 
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.dto.OrderReqDTO;
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.dto.UserReqDto;
+import br.com.qwasolucoes.cursoudemy.curso_spring.domain.enums.OrderStatus;
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.persistence.entity.Order;
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.persistence.entity.User;
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.persistence.repository.OrderRepository;
@@ -17,13 +18,16 @@ import org.springframework.stereotype.Service;
 public class OrderService {
 
     private OrderRepository orderRepository;
+    private UserRepository userRepository;
 
     public Page<Order> obterTodos(Pageable pageable){
         return orderRepository.findAll(pageable);
     }
 
     public Order criarNovo(OrderReqDTO orderReqDto){
-        return orderRepository.save(new Order(orderReqDto));
+        Order order = new Order(orderReqDto);
+        order.setOrderStatus(OrderStatus.WAITING_PAYMENT);
+        return orderRepository.save(order);
     }
 
 }

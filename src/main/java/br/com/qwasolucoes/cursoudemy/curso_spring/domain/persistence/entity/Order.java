@@ -2,6 +2,7 @@ package br.com.qwasolucoes.cursoudemy.curso_spring.domain.persistence.entity;
 
 
 import br.com.qwasolucoes.cursoudemy.curso_spring.domain.dto.OrderReqDTO;
+import br.com.qwasolucoes.cursoudemy.curso_spring.domain.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,6 +27,9 @@ public class Order {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     @JsonIgnore
@@ -33,6 +37,7 @@ public class Order {
 
     public Order(OrderReqDTO orderReqDto) {
         this.moment = orderReqDto.moment();
+        this.orderStatus = orderReqDto.orderStatus();
         this.client= orderReqDto.client();
     }
 }
