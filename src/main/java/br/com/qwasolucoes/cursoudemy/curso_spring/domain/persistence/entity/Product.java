@@ -28,6 +28,10 @@ public class Product {
 
     private String imgUrl;
 
+    @ManyToMany
+    @JoinTable(name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
     public Product(ProductDTO productDTO) {
@@ -36,5 +40,12 @@ public class Product {
         this.price = productDTO.price();
         this.imgUrl = productDTO.imgUrl();
         this.categories = productDTO.categories();
+    }
+
+    public Product(String name, String description, Double price, String imgUrl) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
     }
 }

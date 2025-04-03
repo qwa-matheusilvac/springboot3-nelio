@@ -21,9 +21,14 @@ public class Category {
 
     private String name;
 
+    @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
 
     public Category(CategoryReqDTO categoryReqDTO) {
         this.name = categoryReqDTO.name();
+    }
+
+    public Category(String name) {
+        this.name = name;
     }
 }
