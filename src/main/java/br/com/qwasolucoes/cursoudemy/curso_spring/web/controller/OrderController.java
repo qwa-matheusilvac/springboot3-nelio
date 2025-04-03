@@ -29,7 +29,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<Order> criarNovo(@RequestBody OrderReqDTO orderReqDto, UriComponentsBuilder uriBuilder){
         Order order = orderService.criarNovo(orderReqDto);
-        URI uri = uriBuilder.path("/books/{id}").buildAndExpand(order.getId()).toUri();
+        URI uri = uriBuilder.path("/order/{id}").buildAndExpand(order.getId()).toUri();
         return ResponseEntity.created(uri).body(order);
     }
 
