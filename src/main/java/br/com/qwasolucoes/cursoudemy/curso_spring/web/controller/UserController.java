@@ -29,7 +29,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> criarNovo(@RequestBody UserReqDto userReqDto, UriComponentsBuilder uriBuilder){
         User user = userService.criarNovo(userReqDto);
-        URI uri = uriBuilder.path("/books/{id}").buildAndExpand(user.getId()).toUri();
+        URI uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).body(user);
     }
 

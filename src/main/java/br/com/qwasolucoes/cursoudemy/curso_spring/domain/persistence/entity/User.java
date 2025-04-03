@@ -33,6 +33,13 @@ public class User {
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList();
 
+    public User(String name, String email, String phone, String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
+
     public User(UserReqDto userReqDto) {
         this.name = userReqDto.name();
         this.email = userReqDto.email();
