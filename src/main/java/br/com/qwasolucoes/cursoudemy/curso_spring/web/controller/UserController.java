@@ -26,6 +26,16 @@ public class UserController {
         return userService.obterTodos(page);
     }
 
+    @GetMapping(value = "/{id}")
+    public User obterPorID(@PathVariable Long id){
+        return userService.obterPorID(id);
+    }
+
+    @PutMapping(value = "/{id}")
+    public User atualizarUser(@PathVariable Long id, @RequestBody UserReqDto userReqDto){
+        return userService.atualizarUser(id, userReqDto);
+    }
+
     @PostMapping
     public ResponseEntity<User> criarNovo(@RequestBody UserReqDto userReqDto, UriComponentsBuilder uriBuilder){
         User user = userService.criarNovo(userReqDto);
@@ -33,4 +43,9 @@ public class UserController {
         return ResponseEntity.created(uri).body(user);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id){
+       userService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
 }

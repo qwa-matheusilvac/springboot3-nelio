@@ -57,4 +57,20 @@ class UserTest {
     @Test
     void setPassword() {
     }
+
+    @Test
+    void testEquals1() {
+    }
+
+    @Test
+    void testCanEqual() {
+    }
+
+    @Test
+    void testHashCode1() {
+    }
+
+    @Test
+    void getOrders() {
+    }
 }
