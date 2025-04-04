@@ -7,7 +7,7 @@ import java.time.Instant;
 
 public record OrderReqDTO (
         Instant moment,
-        User client,
-        OrderStatus orderStatus
+        OrderStatus orderStatus,
+        User client
 ) {
 }
